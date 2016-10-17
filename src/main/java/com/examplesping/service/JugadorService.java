@@ -31,13 +31,21 @@ public class JugadorService {
         Jugadores j5= new Jugadores("algo",LocalDate.of(1992,12,10),76,12,45,"aleron");
         jugadorRepositorio.save(j5);
 
-        System.out.print("Buscar jugadores por nombre");
-        System.out.print(jugadorRepositorio.findByNombre("Alan"));
+        System.out.println("Buscar jugadores por nombre");
+        System.out.println(jugadorRepositorio.findByNombre("Alan"));
 
-        System.out.print("Buscar jugadores con mas de 10 canastas");
-        System.out.print(jugadorRepositorio.findByCanastoGreaterThanEqual(10));
+        System.out.println("Buscar jugadores con mas de 10 canastas");
+        System.out.println(jugadorRepositorio.findByCanastoGreaterThanEqual(10));
 
-        System.out.print("Buscar jugadores con mas de 10 canastas");
-        System.out.print(jugadorRepositorio.findByCanastoGreaterThanEqual(10));
+        System.out.println("Buscar jugadores con asistencias entre 5 y 10");
+        System.out.println(jugadorRepositorio.findByAsistoBetween(5,10));
+
+        System.out.println("Buscar a los bases");
+        System.out.println(jugadorRepositorio.findByPosicion("aleron"));
+
+        System.out.println("Buscar por fecha nacimiento");
+        System.out.println(jugadorRepositorio.findByNacimientoBefore(LocalDate.of(1990,12,12)));
+
+
     }
 }
