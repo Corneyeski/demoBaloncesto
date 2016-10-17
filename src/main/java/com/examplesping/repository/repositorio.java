@@ -10,11 +10,7 @@ import java.util.List;
 public interface repositorio extends JpaRepository<Jugadores, Long> {
 
 
-    @Query("SELECT nombre FROM Jugadores jugador WHERE jugador.nombre LIKE CONCAT(:nombre,'*')")
-    List<Jugadores> findCarByPlateNumberSubstring(@Param("nombre") String nombre);
-
-    List<Jugadores> findByNombreStartingWith(String nombre);
-
-    List<Jugadores> FindByNombre(String nombre);
-
+    List<Jugadores> findByNombre(String nombre);
+    List<Jugadores> findByCanastoGreaterThanEqual(int canastas);
+    List<Jugadores> findByAsistoBetween(int min, int max);
 }

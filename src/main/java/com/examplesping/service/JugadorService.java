@@ -32,6 +32,12 @@ public class JugadorService {
         jugadorRepositorio.save(j5);
 
         System.out.print("Buscar jugadores por nombre");
-        System.out.print(jugadorRepositorio.FindByNombre("Alan"));
+        System.out.print(jugadorRepositorio.findByNombre("Alan"));
+
+        System.out.print("Buscar jugadores con mas de 10 canastas");
+        System.out.print(jugadorRepositorio.findByCanastoGreaterThanEqual(10));
+
+        System.out.print("Buscar jugadores con mas de 10 canastas");
+        System.out.print(jugadorRepositorio.findByCanastoGreaterThanEqual(10));
     }
 }

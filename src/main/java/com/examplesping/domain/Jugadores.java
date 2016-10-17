@@ -34,9 +34,7 @@ public class Jugadores {
 
     public Jugadores(){}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    public void setId(long id) { this.id = id;}
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -62,7 +60,7 @@ public class Jugadores {
         this.posicion = posicion;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
