@@ -46,6 +46,7 @@ public class JugadorService {
         System.out.println("Buscar por fecha nacimiento");
         System.out.println(jugadorRepositorio.findByNacimientoBefore(LocalDate.of(1990,12,12)));
 
-
+        System.out.println("Media jugadores agrupados");
+        System.out.println(jugadorRepositorio.AvgCanastoAndAvgAsistoAndAvgRebotoGroupbyPosicion());
     }
 }
