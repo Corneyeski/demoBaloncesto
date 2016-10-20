@@ -7,6 +7,7 @@ import com.examplesping.domain.Jugadores;
         import org.springframework.boot.autoconfigure.SpringBootApplication;
 
         import java.time.LocalDate;
+import java.util.List;
 
 @SpringBootApplication
 public class JugadorService {
@@ -47,6 +48,15 @@ public class JugadorService {
         System.out.println(jugadorRepositorio.findByNacimientoBefore(LocalDate.of(1990,12,12)));
 
         System.out.println("Media jugadores agrupados");
-        System.out.println(jugadorRepositorio.AvgCanastoAndAvgAsistoAndAvgRebotoGroupbyPosicion());
+        List<Object[]> carList = jugadorRepositorio.AvgCanastoAndAvgAsistoAndAvgRebotoGroupbyPosicion();
+
+        for (Object[] jugador : carList)
+        {
+            System.out.print(jugador[0] + " ");
+            System.out.print(jugador[1] + " ");
+            System.out.print(jugador[2] + " ");
+            System.out.print(jugador[3] + " ");
+            System.out.println("");
+        }
     }
 }

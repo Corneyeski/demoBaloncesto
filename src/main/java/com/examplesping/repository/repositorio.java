@@ -18,11 +18,12 @@ public interface repositorio extends JpaRepository<Jugadores, Long> {
     List<Jugadores> findByPosicion(String posicion);
     List<Jugadores> findByNacimientoBefore(LocalDate fecha);
 
-    @Query("SELECT  AVG(jugadores.canasto), AVG(jugadores.asisto), " +
+    @Query("SELECT jugadores.posicion,  AVG(jugadores.canasto), AVG(jugadores.asisto), " +
             "AVG(jugadores.reboto)" +
             "FROM Jugadores jugadores " +
             "GROUP BY jugadores.posicion")
     List<Object[]> AvgCanastoAndAvgAsistoAndAvgRebotoGroupbyPosicion();
+
 
    /* @Query("SELECT car.brand, AVG(car.price), MIN(car.price), MAX(car.price) " +
             "FROM Car car " +
