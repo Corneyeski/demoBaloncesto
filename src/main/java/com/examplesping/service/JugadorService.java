@@ -1,35 +1,59 @@
 package com.examplesping.service;
 
-import com.examplesping.domain.Jugadores;
-        import com.examplesping.repository.repositorio;
+import com.examplesping.domain.Equipo;
+import com.examplesping.domain.Jugador;
+import com.examplesping.repository.EquipoRepository;
+import com.examplesping.repository.JugadorRepositorio;
         import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.boot.SpringApplication;
-        import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Service;
 
-        import java.time.LocalDate;
+import java.time.LocalDate;
 import java.util.List;
 
-@SpringBootApplication
+@Service
 public class JugadorService {
 
     @Autowired
-    private repositorio jugadorRepositorio;
+    private JugadorRepositorio jugadorRepositorio;
+    @Autowired
+    private EquipoRepository equipoRepositorio;
 
     public void pruebaJugadores(){
 
-        Jugadores j1= new Jugadores("Alan", LocalDate.of(1992,12,10),10,20,50,"aleron");
+        Equipo e1= new Equipo("Bulls","chicago", LocalDate.of(1992,12,10));
+        equipoRepositorio.save(e1);
+
+        Equipo e2= new Equipo("Memphis","memphis",LocalDate.of(1992,12,10));
+        equipoRepositorio.save(e2);
+
+        Equipo e3= new Equipo("Yankies","nueva york",LocalDate.of(1992,12,10));
+        equipoRepositorio.save(e3);
+
+        Equipo e4= new Equipo("Lakers","LA",LocalDate.of(1992,12,10));
+        equipoRepositorio.save(e4);
+
+        Equipo e5= new Equipo("shocks","miami",LocalDate.of(1992,12,10));
+        equipoRepositorio.save(e5);
+
+        Jugador j1= new Jugador("Alan", LocalDate.of(1992,12,10),10,20,50,"aleron");
+        j1.setEquipo(e1);
         jugadorRepositorio.save(j1);
 
-        Jugadores j2= new Jugadores("Alex",LocalDate.of(1992,12,10),20,100,32,"pichichi");
+        Jugador j2= new Jugador("Alex",LocalDate.of(1992,12,10),20,100,32,"pichichi");
+        j2.setEquipo(e2);
         jugadorRepositorio.save(j2);
 
-        Jugadores j3= new Jugadores("ricard",LocalDate.of(1992,12,10),67,45,35,"lateral");
+        Jugador j3= new Jugador("ricard",LocalDate.of(1992,12,10),67,45,35,"lateral");
+        j3.setEquipo(e3);
         jugadorRepositorio.save(j3);
 
-        Jugadores j4= new Jugadores("metalero",LocalDate.of(1992,12,10),70,57,98,"defensa");
+        Jugador j4= new Jugador("metalero",LocalDate.of(1992,12,10),70,57,98,"defensa");
+        j4.setEquipo(e4);
         jugadorRepositorio.save(j4);
 
-        Jugadores j5= new Jugadores("algo",LocalDate.of(1992,12,10),76,12,45,"aleron");
+        Jugador j5= new Jugador("algo",LocalDate.of(1992,12,10),76,12,45,"aleron");
+        j5.setEquipo(e5);
         jugadorRepositorio.save(j5);
 
         System.out.println("Buscar jugadores por nombre");
@@ -58,5 +82,30 @@ public class JugadorService {
             System.out.print(jugador[3] + " ");
             System.out.println("");
         }
+
+        List<Object[]> media = jugadorRepositorio.AvgCanastoAndAvgAsistoAndAvgRebotoGroupbyPosicion2();
+
+        for (Object[] jugador : media)
+        {
+            System.out.print(jugador[0] + " ");
+            System.out.print(jugador[1] + " ");
+            System.out.print(jugador[2] + " ");
+            System.out.print(jugador[3] + " ");
+            System.out.print(jugador[4] + " ");
+            System.out.print(jugador[5] + " ");
+            System.out.print(jugador[6] + " ");
+            System.out.print(jugador[7] + " ");
+            System.out.print(jugador[8] + " ");
+            System.out.print(jugador[9] + " ");
+
+
+            System.out.println("");
+        }
+
+        System.out.println("Jugadores de una localidad");
+        System.out.println(equipoRepositorio.findByLocalidad("chicago"));
+
+
     }
+
 }

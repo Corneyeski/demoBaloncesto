@@ -1,17 +1,14 @@
 package com.examplesping.domain;
 
 import javax.annotation.Generated;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 /**
  * Created by Alan on 10/10/2016.
  */
 @Entity
-public class Jugadores {
+public class Jugador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,8 +19,10 @@ public class Jugadores {
     private int asisto;
     private int reboto;
     private String posicion;
+    @ManyToOne
+    private Equipo equipo;
 
-    public Jugadores(String nombre, LocalDate nacimiento, int canasto, int asisto, int reboto, String posicion) {
+    public Jugador(String nombre, LocalDate nacimiento, int canasto, int asisto, int reboto, String posicion) {
         this.nombre = nombre;
         this.nacimiento = nacimiento;
         this.canasto = canasto;
@@ -32,7 +31,7 @@ public class Jugadores {
         this.posicion = posicion;
     }
 
-    public Jugadores(){}
+    public Jugador(){}
 
     public void setId(long id) { this.id = id;}
 
@@ -56,9 +55,7 @@ public class Jugadores {
         this.reboto = reboto;
     }
 
-    public void setPosicion(String posicion) {
-        this.posicion = posicion;
-    }
+    public void setPosicion(String posicion) {this.posicion = posicion;}
 
     public Long getId() {
         return id;
@@ -88,9 +85,21 @@ public class Jugadores {
         return posicion;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
     @Override
     public String toString() {
-        return "Jugadores{" +
+        return "Jugador{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", nacimiento=" + nacimiento +
