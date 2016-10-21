@@ -105,7 +105,22 @@ public class JugadorService {
         System.out.println("Jugadores de una localidad");
         System.out.println(equipoRepositorio.findByLocalidad("chicago"));
 
+        //Devuelve todos los jugadores de un equipo, a partir del nombre completo del equipo.
 
+        System.out.println("Encontrar jugador segun el equipo");
+        System.out.println(equipoRepositorio.findByEquipo("bulls"));
+
+       // Devuelve todos los jugadores de un equipo, que además jueguen en la misma posición
+        //(parámetro adicional de la consulta), por ejemplo, alero.
+
+        System.out.println("Encontrar jugadores del mismo equipo y posicion");
+        System.out.println(equipoRepositorio.findByEquipoAndPosicion("bulls","alero"));
+
+        //Devuelve el jugador que más canastas ha realizado de un equipo determinado como
+        //parámetro.
+
+        System.out.println("Encontrar al jugador con mas canastas por equipo");
+        System.out.println(equipoRepositorio.findByEquipoWhereCanastoMax("lakers"));
     }
 
 }
