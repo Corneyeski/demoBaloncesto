@@ -12,7 +12,9 @@ import java.util.List;
 public interface EquipoRepository extends JpaRepository<Equipo, Long> {
 
     List<Equipo>findByLocalidad(String localidad);
-    List<Jugador>findByEquipo(String equipo);
-    List<Jugador>findByEquipoAndPosicion(String equipo, String posicion);
-    List<Jugador>findByEquipoWhereCanastoMax(String equipo);
+   /* List<Jugador>findByEquipo(String equipo);  */
+
+   /* List<Jugador>findByEquipoAndPosicion(String equipo, String posicion);
+    List<Jugador>findByEquipoWhereCanastoMax(String equipo); */
+
 }

@@ -42,4 +42,10 @@ public interface JugadorRepositorio extends JpaRepository<Jugador, Long> {
            "FROM Jugador jugador " +
            "GROUP BY jugador.posicion")
    List<Object[]> AvgCanastoAndAvgAsistoAndAvgRebotoGroupbyPosicion2();
+
+    //equipos
+
+    List<Jugador>findByEquipo(String equipo);
+    List<Jugador>findByEquipoAndPosicion(String equipo, String posicion);
+    List<Jugador>findByEquipoWhereCanastoMax(String equipo);
 }
