@@ -108,7 +108,7 @@ public class JugadorService {
         //Devuelve todos los jugadores de un equipo, a partir del nombre completo del equipo.
 
         System.out.println("Encontrar jugador segun el equipo");
-        System.out.println(jugadorRepositorio.findByEquipo("bulls"));
+        System.out.println(jugadorRepositorio.findByEquipo_id("Bulls"));
 
        // Devuelve todos los jugadores de un equipo, que además jueguen en la misma posición
         //(parámetro adicional de la consulta), por ejemplo, alero.
@@ -120,7 +120,7 @@ public class JugadorService {
         //parámetro.
 
         System.out.println("Encontrar al jugador con mas canastas por equipo");
-        System.out.println(jugadorRepositorio.findByEquipoWhereCanastoMax("lakers"));
+       // System.out.println(jugadorRepositorio.findByEquipoWhereCanastoMax("lakers"));
     }
 
 }

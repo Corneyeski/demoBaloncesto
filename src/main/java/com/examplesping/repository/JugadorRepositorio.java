@@ -45,7 +45,7 @@ public interface JugadorRepositorio extends JpaRepository<Jugador, Long> {
 
     //equipos
 
-    List<Jugador>findByEquipo(String equipo);
+    List<Jugador>findByEquipo_id(String equipo);
     List<Jugador>findByEquipoAndPosicion(String equipo, String posicion);
-    List<Jugador>findByEquipoWhereCanastoMax(String equipo);
+    //List<Jugador>findByEquipoWhereCanastoMax(String equipo);
 }
