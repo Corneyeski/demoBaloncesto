@@ -3,6 +3,7 @@ package com.examplesping.repository;
 import com.examplesping.domain.Jugador;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -49,4 +50,6 @@ public interface JugadorRepositorio extends JpaRepository<Jugador, Long> {
     //List<Jugador>findByEquipo(Integer equipo);
     //List<Jugador>findByEquipoAndPosicion(String equipo, String posicion);
     //List<Jugador>findByEquipoWhereCanastoMax(String equipo);
+    List<Jugador>findByEquipoNombre(String nombre);
+    List<Jugador>findByEquipoNombreAndPosicion(String equipo, String posicion);
 }
