@@ -3,6 +3,8 @@ package com.examplesping.repository;
 import com.examplesping.domain.Equipo;
 import com.examplesping.domain.Jugador;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -13,7 +15,11 @@ public interface EquipoRepository extends JpaRepository<Equipo, Long> {
 
     List<Equipo>findByLocalidad(String localidad);
    /* List<Jugador>findByEquipo(String equipo);  */
+   @Query("SELECT jugador FROM Jugador jugador, Equipo equipo WHERE equipo.id = jugador.equipo AND equipo.nombre = :nombre")
+    List<Jugador>findByEquipo(@Param("nombre")String nombre);
 
+    @Query("SELECT jugador FROM Jugador jugador, Equipo equipo WHERE equipo.id = jugador.equipo AND equipo.nombre = :nombre AND jugador.posicion = :posicion")
+    List<Jugador>findByEquipoAndPosicion(@Param("nombre")String nombre, String posicion);
    /* List<Jugador>findByEquipoAndPosicion(String equipo, String posicion);
     List<Jugador>findByEquipoWhereCanastoMax(String equipo); */
 
